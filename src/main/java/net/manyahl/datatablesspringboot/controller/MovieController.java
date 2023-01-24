@@ -17,7 +17,7 @@ public class MovieController {
 	private MovieService movieService;
 
 	@GetMapping
-	public String showAllMoviesTale() {
+	public String showAllMoviesTable() {
 		return "movies";
 	}
 
