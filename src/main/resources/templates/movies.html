@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>DataTables: server side processing using Spring Boot</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.css" />
+</head>
+<body>
+	<div class="container">
+		<table class="table" id="movies-table">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Title</th>
+					<th scope="col">Release Date</th>
+					<th scope="col">Rating</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#movies-table').DataTable({
+				processing : true,
+				serverSide : true,
+				ajax : {
+					url : "/movies/get-all",
+					type : "POST"
+				},
+				columns : [ {
+					data : 'id',
+				}, {
+					data : 'title'
+				}, {
+					data : 'releaseDate'
+				}, {
+					data : 'rating'
+				} ],
+				lengthMenu : [ [ 3, 5, 10, -1 ], [ 3, 5, 10, 'All' ], ]
+			});
+		});
+	</script>
+</body>
+</html>
