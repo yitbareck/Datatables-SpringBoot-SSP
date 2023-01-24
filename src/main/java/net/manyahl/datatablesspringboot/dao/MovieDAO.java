@@ -30,7 +30,7 @@ public class MovieDAO {
 		return movies.stream()
 				.skip(start)
 				.limit(length)
-				.filter(r -> r.getTitle().toLowerCase().contains(searchValue.toLowerCase()))
+				.filter(movie -> movie.getTitle().toLowerCase().contains(searchValue.toLowerCase()))
 				.sorted(getComparator(sortColumn,sortColumnDirection))
 				.collect(Collectors.toList());
 	}
