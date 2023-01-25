@@ -18,7 +18,7 @@ public class MovieService {
 		int draw = Integer.parseInt(request.getParameter("draw"));
 		int start = Integer.parseInt(request.getParameter("start"));
 		int length = Integer.parseInt(request.getParameter("length"));
-		String sortColumn =  request.getParameter("columns[" + request.getParameter("order[0][column]") + "][name]");
+		String sortColumn =  request.getParameter("columns[" + request.getParameter("order[0][column]") + "][data]");
 		String sortColumnDirection = request.getParameter("order[0][dir]");
 		String searchValue = request.getParameter("search[value]");
 		int recordsTotal = movieDAO.getAllMoviesCount();
